@@ -21,7 +21,7 @@ foreach ($result["DBInstances"] as $dbinstance) {
 
 //conection: Connect to mysql database
 $link = mysqli_connect($endpoint,"itmo444am","itmo444am-pass") or die("Error " . mysqli_error($link));
-$create_db_sql = "CREATE DATABASE `am-gallery`;";
+$create_db_sql = "CREATE SCHEMA `am-gallery`;";
 $link->query($create_db_sql);
 
 mysqli_select_db($link, "am-gallery");
