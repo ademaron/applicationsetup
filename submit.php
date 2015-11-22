@@ -53,5 +53,31 @@ $sql = "INSERT INTO imageGallery(uname, email, sms, raw_s3_url, jpg_filename, st
 $link->query($sql);
 $link->close();
 
+
+use Aws\Sns\SnsClient;
+$Snsclient = SnsClient::factory(array(
+    'version' => 'latest',
+    'region'  => 'us-east-1'
+));
+
+$result = $Snsclient->createTopic([
+    'Name' => 'minipro2-maron', 
+]);
+
+$snsarn =  $result['TopicArn'];
+
+
+$result = $Snsclient->subscribe([
+    'Endpoint' => $useremail,
+    'Protocol' => 'email', 
+    'TopicArn' => $snsarn, 
+]);
+ 
+$result = $Snsclient->publish([
+    'Message' => 'Hello '.$username.', Your image was uploaded!',
+    'Subject' => 'New Upload!',
+    'TopicArn' => $snsarn
+]);
+
 header("Location:gallery.php?email=".$useremail);
 exit;
