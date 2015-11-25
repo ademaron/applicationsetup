@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,45 +20,31 @@
 	<script src="js/bootstrap.min.js"></script>  
 </head>
   <body>
-
-
 <div class="container">
       <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Ade's Image uploader!</h3>
+        <nav></nav>
+        <h3 class="text-muted">Adestagram</h3>
       </div>
-
       <div class="jumbotron">
-        <h1>Jumbotron heading</h1>
+        <h1>Whatcha wanna upload?</h1>
         <p class="lead"></p>
         <p><form enctype="multipart/form-data" action="submit.php" method="POST">
-    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
-    Username: <input type="text" name="username" value="User"><br/>
-    Send this file: <input name="userfile" type="file" /><br/>
-    Enter Email of user: <input type="email" name="useremail" value="test@test.com"><br/>
-    Enter Phone of user (1-XXX-XXX-XXXX): <input type="phone" name="phone" value="18001111111">
-    <input type="submit" value="Send File" />
-</form>
+    	<input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+    	Username: <input type="text" name="username" value="User"><br/>
+    	Send this file: <input name="userfile" type="file" /><br/>
+    	Enter Email of user: <input type="email" name="useremail" value="test@test.com"><br/>
+    	Enter Phone of user (1-XXX-XXX-XXXX): <input type="phone" name="phone" value="18001111111">
+    	<input type="submit" value="Send File" />
+	</form>
 <hr/>
-
 <form enctype="multipart/form-data" action="gallery.php" method="GET">
-
     Enter email of user for gallery to browse: <input type="email" name="email" value="test@test.com">
     <input type="submit" value="Load Gallery" />
 </form></p>
       </div>
-
       <footer class="footer">
         <p>&copy; 2015</p>
       </footer>
-
     </div> 
-
 </body>
 </html>
