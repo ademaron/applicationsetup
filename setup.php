@@ -2,8 +2,12 @@
 include 'vendor/autoload.php';
 use Aws\Rds\RdsClient;
 $client = RdsClient::factory(array(
-    'version' => 'latest',
-    'region'  => 'us-east-1'
+    	'version' => 'latest',
+    	'region'  => 'us-east-1',
+	'credentials' => array(
+        	'key'    => 'AKIAIJLWLFBQ6GZTR24Q',
+        	'secret' => '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',
+    	)
 ));
 
 $result = $client->describeDBInstances(array(

@@ -7,7 +7,6 @@ $email = $_GET["email"];
 $client = RdsClient::factory(array(
     	'version' => 'latest',
     	'region'  => 'us-east-1',
-	
 ));
 
 $result = $client->describeDBInstances(array(
@@ -58,8 +57,13 @@ foreach ($result["DBInstances"] as $dbinstance) {
 		$sql = "SELECT * FROM imageGallery WHERE email='$email'";
 		$result = $link->query($sql);
 		while ($row = $result->fetch_assoc()) {
-		    echo "<p><img src =\" " . $row['raw_s3_url'] . "\" /><br/></p>";
+			if($_SESSION["uploader"]){
+				echo "<p>Before: <img src =\" " . $row['raw_s3_url'] . "\" /><br/>
+					After: <img src =\" " . $row['fin_s3_url'] . "\" /><br/></p>";			
+			}else{
+			    	echo "<p><img src =\" " . $row['raw_s3_url'] . "\" /><br/></p>";
 
+			}
 		}
 		$link->close();	
 	?>
